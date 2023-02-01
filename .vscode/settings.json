@@ -1,0 +1,6 @@
+{
+    "debug.console.wordWrap": false,
+    "diffEditor.wordWrap": "off",
+    "prettier.proseWrap": "never",
+    "editor.wordWrap": "off"
+}
