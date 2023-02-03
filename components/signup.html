@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+
+    <title>Sign up</title>
+  </head>
+  <body>
+    <!--Sign up form-->
+    <section class="d-flex align-items-center justify-content-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 m-auto">
+            <div class="card">
+              <form class="card-body">
+                <div class="card-title text-primary text-center">
+                  <h2>Sign up</h2>
+                </div>
+                <label for="Account type">Account type</label>
+                <select id="accounttype" class="form-control">
+                  <option value="1">Admin</option>
+                  <option value="2">User</option>
+                </select>
+                <label for="name">Name</label>
+                <input
+                  id="name"
+                  type="text"
+                  class="form-control"
+                  placeholder="Name"
+                  required
+                />
+                <label for="username" class="card-title text-sm"
+                  >Username</label
+                >
+                <input
+                  id="username"
+                  type="text"
+                  class="form-control"
+                  placeholder="Username"
+                  required
+                />
+                <label for="password">Password</label>
+                <input
+                  id="password"
+                  type="password"
+                  class="form-control"
+                  placeholder="Password"
+                  required
+                />
+                <label
+                  for="confirm-password"
+                  class="card-title text-sm text-danger"
+                  required
+                  >Confirm Password</label
+                >
+                <input
+                  id="confirm-password"
+                  type="text"
+                  class="form-control"
+                  required
+                />
+                <button class="btn btn-dark m-1" type="submit">Sign up</button>
+                <div class="row m-auto">
+                  <label class="text-danger">Already have account?</label>
+                  <button
+                    class="btn btn-primary m-1"
+                    id="login"
+                    onclick="location.href='login.html'"
+                  >
+                    Login
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
