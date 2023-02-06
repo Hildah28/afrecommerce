@@ -64,7 +64,78 @@
 <!-- website body -->
 
 
-
+<!--product registration form-->
+<section class="d-flex align-items-center justify-content-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="card m-1">
+          <div class="card-title text-primary text-center">
+            <h3>Product details</h3>
+          </div>
+          <img src="/images/image3.jpg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <label for="productType" class="card-title text-sm"
+              >Product Type</label
+            >
+            <select class="form-control">
+              <option id="productType" value="Clothing">Clothing</option>
+              <option  id="productType" value="Footware">Footware</option>
+              <option  id="productType" value="Accessories">Accessories</option>
+            </select>
+            <div class="row">
+              <div class="col-lg-4">
+                <label for="name" class="card-title text-sm"
+                  >Product name</label
+                >
+                <input
+                  id="name"
+                  type="text"
+                  class="form-control"
+                  placeholder="Name"
+                />
+              </div>
+              <div class="col-lg-4">
+                <label for="price" class="card-title text-sm"
+                  >Product price</label
+                >
+                <input
+                  id="price"
+                  type="text"
+                  class="form-control"
+                  placeholder="Price"
+                />
+              </div>
+              <div class="col-lg-4">
+                <label for="noItems" class="card-title">No of items</label>
+                <input id="noItems" type="text" class="form-control" />
+              </div>
+            </div>
+            <label for="image" class="card-title text-sm"
+              >Product image</label
+            >
+            <form class="row">
+              <div class="col-sm-12">
+                <div id="preview"></div>
+                <input
+                  type="file"
+                  class="btn form-control"
+                  id="productImage"
+                  onchange="previewImage(event)"
+                />
+              </div>
+            </form>
+            <label for="description" class="card-title text-sm"
+              >Product description</label
+            >
+            <input id="description" type="text" class="form-control" />
+            <button class="btn btn-primary m-1" type="submit" id="saveProduct">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 
@@ -89,46 +160,6 @@
             </div>
         </div>        
       </div>
-      <div class="col-lg-3">
-        <div class="card m-1">
-            <img src="/images/IKDMU87I-large.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h3 class="card-title text-sm">Product name</h3>
-                <p class="card-text text-sm">Description</p>
-                <p class="card-text text-sm">Price</p>
-                <p class="card-text text-sm">Availability</p>
-                <p class="card-text text-sm">Ratings</p>
-                <button class="btn btn-dark" type="button">Add cart <i class="fas fa-shopping-cart"></i> </button>
-            </div>
-        </div>        
-    </div>
-    <div class="col-lg-3">
-        <div class="card m-1">
-            <img src="/images/beautiful-african-fashion-model-traditional-dress-young-34795756.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h3 class="card-title text-sm">Product name</h3>
-                <p class="card-text text-sm">Description</p>
-                <p class="card-text text-sm">Price</p>
-                <p class="card-text text-sm">Availability</p>
-                <p class="card-text text-sm">Ratings</p>
-                <button class="btn btn-dark" type="button">Add cart <i class="fas fa-shopping-cart"></i> </button>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3">
-        <div class="card m-1">
-            <img src="/images/image4.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h3 class="card-title text-sm">Product name</h3>
-                <p class="card-text text-sm">Description</p>
-                <p class="card-text text-sm">Price</p>
-                <p class="card-text text-sm">Availability</p>
-                <p class="card-text text-sm">Ratings</p>
-                <button class="btn btn-dark" type="button">Add cart <i class="fas fa-shopping-cart"></i> </button>
-            </div>
-        </div>
-    </div>
-
 </div>
 
 
