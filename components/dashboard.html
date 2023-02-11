@@ -22,7 +22,7 @@
     />
   </head>
   <body>
-    <div class="container">
+    <div class="container" >
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
           <a class="navbar-brand" href="#">Dashboard</a>
@@ -46,20 +46,30 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">Users</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Products</a>
-              </li>
+
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Products
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Add product</a>
+                  <a class="dropdown-item" href="#">Product list</a>
+                </div>
+            </li>                
+
+
               <li class="nav-item">
                 <a class="nav-link" href="#">Orders</a>
               </li>
 
               
               <li class="nav-item">
-                <a class="nav-link" href="#">Settings</a>
+                <a class="nav-link" href="#dashboardSummary">Summary</a>
               </li>
 
-              <li class="nav-item">
-                <a class="nav-link" href="#">Log out</a>
+              <li class="nav-item">               
+                <a class="nav-link" type="button" onclick="location.href='/index.html'">Log Out</a>
               </li>
             </ul>
           </div>
@@ -69,12 +79,102 @@
 
 
 
+
+ <!--Product registration-->
+ <section class="d-flex align-items-center justify-content-center" id="productRegistration">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card m-1">
+          <div class="card-title text-primary text-center mt-10">
+            <h3>Add products</h3>
+          </div>
+          
+          <div class="card-body">
+
+            <div class="row">
+              <div class="col-lg-3">
+                <label for="productType" class="card-title text-sm">Product Type</label>
+                <select class="form-control">
+                  <option id="productType"value="Clothing">Clothing</option>
+                  <option id="productType" value="Footware">Footware</option>
+                  <option id="productType" value="Accessories">Accessories</option>
+                </select>
+              </div>
+              <div class="col-lg-3">
+                <label for="name" class="card-title text-sm" >Product name</label>
+                <input
+                  id="name"
+                  type="text"
+                  class="form-control"
+                  placeholder="Name"
+                />
+                
+              </div>
+              <div class="col-lg-3">                
+                <label for="price" class="card-title text-sm"
+                  >Product price</label
+                >
+                <input
+                  id="price"
+                  type="number"
+                  class="form-control"
+                  placeholder="Price"
+                />
+                
+              </div>
+              <div class="col-lg-3">
+                <label for="noItems" class="card-title">No of items</label>
+                <input id="noItems" type="number" class="form-control" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <form>
+                    <label for="image" class="card-title text-sm"
+                    >Product image</label>
+                    <div id="preview"></div>
+                    <input
+                      type="file"
+                      class="btn form-control"
+                      id="productImage"
+                      onchange="previewImage(event)"
+                    />
+                </form>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12"> 
+                <label for="description" class="card-title text-sm" >Product description</label >
+                <input id="description" type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="row">              
+              <div class="col-6 m-auto">                
+                <button class="btn btn-primary m-1" type="submit" id="saveProduct">Save product</button>
+              </div>
+            </div>           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
       <!--Dash board summary-->
-      <section>
-        <div class="container-fluid p-5">
+      <section id="dashboardSummary">
+        <div class="container-fluid p-1">
+          <div class="card-title text-primary text-center mt-10">
+            <h3>Summary</h3>
+          </div>
           <div class="row">
             <div class="col-md-3">
-              <div class="card text-white bg-primary mb-3">
+              <div class="card text-white bg-primary mb-1">
                 <div class="card-header">Total Sales</div>
                 <div class="card-body">
                   <h4 class="card-title">$10,000</h4>
@@ -111,8 +211,7 @@
 
 
 <!--Products Table data-->
-
-<section class="container mt-5">
+<section class="container mt-1">
     <div class="row">
       <div class="col-lg-12">
         <div class="card text-center"> <h3 class="text-primary"> Products table</h3></div>
@@ -138,36 +237,23 @@
 
       
 
-
-
       
-<!--website footer-->
-<div class="col-12">
-    <footer class=" bg-dark">
-        <div class="container">
-          <p class="text-center text-white">Copyright &copy; Afrecom 2023</p>
+            <!--website footer-->
+            <div class="col-12">
+                <footer class=" bg-dark">
+                    <div class="container">
+                      <p class="text-center text-white">Copyright &copy; Afrecom 2023</p>
+                    </div>
+                  </footer>              
+            </div>
         </div>
-      </footer>              
-</div>
-</div>
-</div>  
-
-
-
-
-
-
-
-
-
-
-
-
+    </div> 
+ </div>
+ 
 <!--Links to javascript-->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-    </div>
+<script src="/app.js"></script>  
   </body>
 </html>
