@@ -24,6 +24,7 @@ function saveProductData() {
   let category = document.getElementById("productType").value;
   let quantity = document.getElementById("noItems").value;
   let image = document.getElementById("productImage").value;
+  let text = "";
 
   fetch("http://localhost:3000/products", {
     method: "POST",
@@ -43,10 +44,12 @@ function saveProductData() {
       if (!response.ok) {
         throw new Error("Failed to save product");
       }
-      return response.json();
+      return response.text();
     })
-    .then((data) => {
-      console.log("Product saved successfully", data);
+    .then((text) => {
+      console.log("Response text:", text);
+      let html = text;
+      document.getElementById("saveProductMesseage").innerHTML = html;
     })
     .catch((error) => {
       console.error("Error saving product", error);
