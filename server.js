@@ -41,14 +41,28 @@ app.post("/products", (req, res) => {
     (error, results) => {
       if (error) {
         res.status(500).send("Failed to insert product data");
-        console.error("Error inserting product data", error);
       } else {
         res.status(200).send("Product data inserted successfully");
-        console.dir("Product data inserted successfully" + results);
       }
     }
   );
 });
+
+//route to select products from the database
+app.get("/getProducts", (req, res) => {
+  const selectQuerry = "select * from products";
+  connection.query(selectQuerry, (error, results) => {
+    if (error) {
+      res.status(500).send("Failed to insert product data");
+    } else {
+      res.status(200).send({ message: "Success getting products" });
+      console.log(results);
+    }
+  });
+});
+
+
+
 
 const port = 3000;
 app.listen(port, () => {

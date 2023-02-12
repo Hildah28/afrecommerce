@@ -55,3 +55,44 @@ function saveProductData() {
       console.error("Error saving product", error);
     });
 }
+
+function displayProducts() {
+  let productHtml = `<div class="col-lg-3">
+  <div class="card  m-1">
+      <img class="img-responsive" src="images/image1.jpg" style="width:auto ;height:auto;">
+      <div class="card-body">               
+          <h3 class="card-title text-sm">Product name</h3>
+          <p class="card-text text-sm">Description</p>
+          <p class="card-text text-sm">Price</p>
+          <p class="card-text text-sm">Availability</p>
+          <p class="card-text text-sm"><i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+          </p>
+          <button class="btn btn-dark" type="button">Add cart <i class="fas fa-shopping-cart"></i> </button>
+      </div>
+  </div>        
+</div>`;
+  fetch("http://localhost:3000/getProducts", {
+    method: "get",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to get product");
+      }
+      return response.data();
+    })
+    .then((data) => {
+      console.log(data);
+      return text;
+    })
+    .catch((error) => {
+      console.error("Error getting products", error);
+    });
+}
+displayProducts();
