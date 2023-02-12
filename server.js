@@ -53,16 +53,13 @@ app.get("/getProducts", (req, res) => {
   const selectQuerry = "select * from products";
   connection.query(selectQuerry, (error, results) => {
     if (error) {
-      res.status(500).send("Failed to insert product data");
+      res.status(500).send("Failed to get product data");
     } else {
-      res.status(200).send({ message: "Success getting products" });
+      res.status(200).send({ products: results });
       console.log(results);
     }
   });
 });
-
-
-
 
 const port = 3000;
 app.listen(port, () => {

@@ -22,240 +22,276 @@
     />
   </head>
   <body>
-    <div class="container" >
+    <div class="container">
+      <!--Navabar-->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="#">Dashboard</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+              </li>
 
-              <!--Navabar-->
-              <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container">
-                  <a class="navbar-brand" href="#">Dashboard</a>
-                  <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                  >
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
-                      </li>
-                      
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">Users</a>
-                      </li>
-        
-        
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Products
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="#">Add product</a>
-                          <a class="dropdown-item" href="#">Product list</a>
-                        </div>
-                    </li>                
-        
-        
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">Orders</a>
-                      </li>
-        
-                      
-                      <li class="nav-item">
-                        <a class="nav-link" href="#dashboardSummary">Summary</a>
-                      </li>
-        
-                      <li class="nav-item">               
-                        <a class="nav-link" type="button" onclick="location.href='/index.html'">Log Out</a>
-                      </li>
-                    </ul>
-                  </div>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Users</a>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle text-white"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Products
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Add product</a>
+                  <a class="dropdown-item" href="#">Product list</a>
                 </div>
-              </nav>
-      
+              </li>
 
+              <li class="nav-item">
+                <a class="nav-link" href="#">Orders</a>
+              </li>
 
+              <li class="nav-item">
+                <a class="nav-link" href="#dashboardSummary">Summary</a>
+              </li>
 
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  type="button"
+                  onclick="location.href='/index.html'"
+                  >Log Out</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
 
-
-            <!--Product registration-->
-            <section class="d-flex align-items-center justify-content-center" id="productRegistration">
-              <div class="container">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <div class="card m-1">
-                      <div class="card-title text-primary text-center mt-10">
-                        <h3>Add products</h3>
-                      </div>
-                      <p id="saveProductMesseage" class="text-success text-center"></p>
-                      
-                      <div class="card-body">
-
-                        <div class="row">
-                          <div class="col-lg-3">
-                            <label for="productType" class="card-title text-sm">Product Type</label>
-                            <select class="form-control">
-                              <option id="productType"value="Clothing">Clothing</option>
-                              <option id="productType" value="Footware">Footware</option>
-                              <option id="productType" value="Accessories">Accessories</option>
-                            </select>
-                          </div>
-                          <div class="col-lg-3">
-                            <label for="name" class="card-title text-sm" >Product name</label>
-                            <input
-                              id="name"
-                              type="text"
-                              class="form-control"
-                              placeholder="Name"
-                            />
-                            
-                          </div>
-                          <div class="col-lg-3">                
-                            <label for="price" class="card-title text-sm"
-                              >Product price</label
-                            >
-                            <input
-                              id="price"
-                              type="number"
-                              class="form-control"
-                              placeholder="Price"
-                            />
-                            
-                          </div>
-                          <div class="col-lg-3">
-                            <label for="noItems" class="card-title">No of items</label>
-                            <input id="noItems" type="number" class="form-control" />
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-lg-12">
-                            <form>
-                                <label for="image" class="card-title text-sm"
-                                >Product image</label>
-                                <div id="preview"></div>
-                                <input
-                                  type="file"
-                                  class="btn form-control"
-                                  id="productImage"
-                                  onchange="previewImage(event)"
-                                />
-                            </form>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-lg-12"> 
-                            <label for="description" class="card-title text-sm" >Product description</label >
-                            <input id="description" type="text" class="form-control" />
-                          </div>
-                        </div>
-                        <div class="row">              
-                          <div class="col-6 m-auto">                
-                            <button class="btn btn-primary m-1" type="submit" id="saveProduct">Save product</button>
-                          </div>
-                        </div>           
-                      </div>
-                    </div>
-                  </div>
+      <!--Product registration-->
+      <section
+        class="d-flex align-items-center justify-content-center"
+        id="productRegistration"
+      >
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card m-1">
+                <div class="card-title text-primary text-center mt-10">
+                  <h3>Add products</h3>
                 </div>
-                </div>
-            </section>
+                <p
+                  id="saveProductMesseage"
+                  class="text-success text-center"
+                ></p>
 
-
-
-
-
-
-              <!--Dash board summary-->
-              <section id="dashboardSummary">
-                <div class="container-fluid p-1">
-                  <div class="card-title text-primary text-center mt-10">
-                    <h3>Summary</h3>
-                  </div>
+                <div class="card-body">
                   <div class="row">
-                    <div class="col-md-3">
-                      <div class="card text-white bg-primary mb-1">
-                        <div class="card-header">Total Sales</div>
-                        <div class="card-body">
-                          <h4 class="card-title">$10,000</h4>
-                        </div>
-                      </div>
+                    <div class="col-lg-3">
+                      <label for="productType" class="card-title text-sm"
+                        >Product Type</label
+                      >
+                      <select class="form-control">
+                        <option id="productType" value="Clothing">
+                          Clothing
+                        </option>
+                        <option id="productType" value="Footware">
+                          Footware
+                        </option>
+                        <option id="productType" value="Accessories">
+                          Accessories
+                        </option>
+                      </select>
                     </div>
-                    <div class="col-md-3">
-                      <div class="card text-white bg-success mb-3">
-                        <div class="card-header">Total Orders</div>
-                        <div class="card-body">
-                          <h4 class="card-title">100</h4>
-                        </div>
-                      </div>
+                    <div class="col-lg-3">
+                      <label for="name" class="card-title text-sm"
+                        >Product name</label
+                      >
+                      <input
+                        id="name"
+                        type="text"
+                        class="form-control"
+                        placeholder="Name"
+                      />
                     </div>
-                    <div class="col-md-3">
-                      <div class="card text-white bg-warning mb-3">
-                        <div class="card-header">Average Order Value</div>
-                        <div class="card-body">
-                          <h4 class="card-title">$100</h4>
-                        </div>
-                      </div>
+                    <div class="col-lg-3">
+                      <label for="price" class="card-title text-sm"
+                        >Product price</label
+                      >
+                      <input
+                        id="price"
+                        type="number"
+                        class="form-control"
+                        placeholder="Price"
+                      />
                     </div>
-                    <div class="col-md-3">
-                      <div class="card text-white bg-danger mb-3">
-                        <div class="card-header">Pending Orders</div>
-                        <div class="card-body">
-                          <h4 class="card-title">10</h4>
-                        </div>
-                      </div>
+                    <div class="col-lg-3">
+                      <label for="noItems" class="card-title"
+                        >No of items</label
+                      >
+                      <input id="noItems" type="number" class="form-control" />
                     </div>
                   </div>
-                </div>
-              </section>
-
-
-              <!--Products Table data-->
-              <section class="container mt-1">
                   <div class="row">
                     <div class="col-lg-12">
-                      <div class="card text-center"> <h3 class="text-primary"> Products table</h3></div>
-                      <div class="card text-center">
-                        <div class="card-body">
-                          <table class="table table-bordered">
-                            <thead>
-                              <tr>
-                                <th>Product name</th>
-                                <th>Category</th>
-                                <th>No of items</th>
-                                <th>Unit price</th>
-                                <th>Orders</th>
-                              </tr>
-                            </thead>
-                          </table>
-                        </div>
-                      </div>
+                      <form>
+                        <img
+                          id="previewProductImage"
+                          style="height: 12.5%; width: 12.5%"
+                        />
+                        <input
+                          type="file"
+                          class="btn form-control"
+                          id="productImageInput"
+                          onchange="previewImage(event)"
+                        />
+                      </form>
                     </div>
                   </div>
-                </section>
-
-
-              
-
-              
-                    <!--website footer-->
-                    <div class="col-12">
-                        <footer class=" bg-dark">
-                            <div class="container">
-                              <p class="text-center text-white">Copyright &copy; Afrecom 2023</p>
-                            </div>
-                          </footer>              
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <label for="description" class="card-title text-sm"
+                        >Product description</label
+                      >
+                      <input
+                        id="description"
+                        type="text"
+                        class="form-control"
+                      />
                     </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6 m-auto">
+                      <button
+                        class="btn btn-primary m-1"
+                        type="submit"
+                        id="saveProduct"
+                      >
+                        Save product
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      
-      <!--Links to javascript-->
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-      <script src="/app.js"></script>  
+      </section>
+
+      <!--Dash board summary-->
+      <section id="dashboardSummary">
+        <div class="container-fluid p-1">
+          <div class="card-title text-primary text-center mt-10">
+            <h3>Summary</h3>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="card text-white bg-primary mb-1">
+                <div class="card-header">Total Sales</div>
+                <div class="card-body">
+                  <h4 class="card-title">$10,000</h4>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card text-white bg-success mb-3">
+                <div class="card-header">Total Orders</div>
+                <div class="card-body">
+                  <h4 class="card-title">100</h4>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card text-white bg-warning mb-3">
+                <div class="card-header">Average Order Value</div>
+                <div class="card-body">
+                  <h4 class="card-title">$100</h4>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card text-white bg-danger mb-3">
+                <div class="card-header">Pending Orders</div>
+                <div class="card-body">
+                  <h4 class="card-title">10</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--Products Table data-->
+      <section class="container mt-1">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card text-center">
+              <h3 class="text-primary">Products table</h3>
+            </div>
+            <div class="card text-center">
+              <div class="card-body">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Product name</th>
+                      <th>Category</th>
+                      <th>No of items</th>
+                      <th>Unit price</th>
+                      <th>Orders</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--website footer-->
+      <div class="col-12">
+        <footer class="bg-dark">
+          <div class="container">
+            <p class="text-center text-white">Copyright &copy; Afrecom 2023</p>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!--Links to javascript-->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="dashbord.js"></script>
   </body>
 </html>
