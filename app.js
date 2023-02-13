@@ -14,13 +14,22 @@ function displayProducts() {
       }
     })
     .then((data) => {
+      window.showPage = showPage;
+
       let products = data.products;
 
-      console.log(products);
-      let productHtml = "";
-      products.reverse();
-      products.forEach((product) => {
-        productHtml += `
+      let currentPage = 1;
+      const productsPerPage = 4;
+
+      function showPage(page) {
+        currentPage = page;
+        let productHtml = "";
+        const startIndex = (page - 1) * productsPerPage;
+        const endIndex = startIndex + productsPerPage;
+        const productsToShow = products.slice(startIndex, endIndex);
+
+        productsToShow.forEach((product) => {
+          productHtml += `
         <div class="col-lg-3">
             <div class="card m-1">
                 <img class="img-responsive" src="images/${product.image}" style="width:auto ;height:auto;">
@@ -34,13 +43,39 @@ function displayProducts() {
                         <i class="fas fa-star text-warning"></i>
                         <i class="fas fa-star text-warning"></i>
                     </p>
-                    <button class="btn btn-dark" type="button" id="addCartBtn" onclick="addCart(this)">Add cart <i class="fas fa-shopping-cart"></i> </button>
+                    <button class="btn btn-success" type="button" id="addCartBtn" onclick="addCart(this)">Add cart <i class="fas fa-shopping-cart"></i> </button>
 
                     </div>
             </div>        
         </div>`;
-      });
-      document.getElementById("productsRow").innerHTML = productHtml;
+        });
+        document.getElementById("productsRow").innerHTML = productHtml;
+        updatePaginationControls();
+      }
+
+      function updatePaginationControls() {
+        const totalPages = Math.ceil(products.length / productsPerPage);
+        let paginationControls = "";
+        if (currentPage > 1) {
+          paginationControls += `<button class="btn btn-dark btn-sm form-control m-1" onclick="showPage(
+            ${currentPage - 1}
+          )">Previous</button>`;
+        }
+        for (let i = 1; i <= totalPages; i++) {
+          paginationControls += `<button class="btn btn-dark btn-sm form-control m-1" onclick="showPage(
+            ${i}
+          )">${i}</button>`;
+        }
+        if (currentPage < totalPages) {
+          paginationControls += `<button class="btn btn-dark btn-sm m-1 form-control" onclick="showPage(${
+            currentPage + 1
+          })">Next</button>`;
+        }
+        document.getElementById("paginationControls").innerHTML =
+          paginationControls;
+      }
+
+      showPage(2);
     })
     .catch((error) => {
       console.error("Error getting products", error);
