@@ -59,8 +59,8 @@
                                         </div>
                                     </li>                       
                                 </ul>
-                                                                    
-                                        <i class="fas fa-shopping-cart text-warning" id="cartNoItems"></i>                            
+                                        <i class="fas fa-shopping-cart text-warning"></i>                         
+                                       <input class="form-control" id="cartNoItems" value="1" readonly>                          
                                         <a class="nav-link text-white mr-0" href="/components/login.html">Login</a>
                                 </div>
                             </nav>
@@ -78,7 +78,26 @@
 
                   </div>
               
-
+                      <!-- Product Modal -->
+                      <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="productModalLabel">Make Order</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body container" id="productModalBody">
+                              
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-success" onclick="placeOrder()">Place order</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
 
 

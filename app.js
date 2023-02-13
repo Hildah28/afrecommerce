@@ -43,9 +43,8 @@ function displayProducts() {
                         <i class="fas fa-star text-warning"></i>
                         <i class="fas fa-star text-warning"></i>
                     </p>
-                    <button class="btn btn-success" type="button" id="addCartBtn" onclick="addCart(this)">Add cart <i class="fas fa-shopping-cart"></i> </button>
-
-                    </div>
+                    <button type="button"  class="btn btn-success" type="button" data-toggle="modal" data-target="#productModal" id="addCartBtn" onclick="addCart(this)">Add cart <i class="fas fa-shopping-cart"></i> </button>
+                   </div>
             </div>        
         </div>`;
         });
@@ -87,7 +86,33 @@ function addCart(button) {
   let card = button.closest(".card");
   const name = card.querySelector(".card-title").textContent;
   const price = card.querySelector(".text-danger").textContent;
-  const category = card.querySelector(".text-primary").textContent;
-  console.log(`Name: ${name}, Price: ${price}, Category: ${category}`);
-  document.getElementById("cartNoItems").innerHTML = oldNoItems + 1;
+  console.log(`Name: ${name}, Price: ${price},image: ${name}.jpg`);
+  document.getElementById(
+    "productModalBody"
+  ).innerHTML = `<div class="row"><div class="col-12">
+                    <div class="card m-1">                    
+                          <div class="card-body">    
+                            <img class="img-responsive m-auto border-0 form-control" src="images/${name}.jpg" alt="product image" style="height:50%;width:50%" />           
+                            <h5 class="card-title text-sm text-dark">${name}</h5>
+                            <h5 class="card-text text-sm text-danger">Ksh${price}</h5>
+                            <p class="card-text text-sm">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                            </p>
+                            <input type="number"  class="bg-primary form-control" placeholder="Enter No of items" id="orderNoItems" >
+                          </div>
+                    </div>        
+                  </div></div>`;
+}
+
+function placeOrder() {
+  let numberOfOrders = 0;
+  numberOfOrders = document.getElementById("cartNoItems").value;
+  console.log(`Number of orders: ${numberOfOrders}`);
+  numberOfOrders =
+    parseInt(numberOfOrders) + document.getElementById("orderNoItems").value;
+  document.getElementById("cartNoItems").value = numberOfOrders;
 }
