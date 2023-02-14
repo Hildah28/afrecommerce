@@ -1,3 +1,56 @@
+function showAbout() {
+  var homeSection = document.getElementById("homeSection");
+  homeSection.style.display = "none";
+
+  var aboutSection = document.getElementById("about");
+  aboutSection.style.display = "block";
+
+  var productSection = document.getElementById("productsSection");
+  productSection.style.display = "none";
+
+  var contactSection = document.getElementById("contactSection");
+  contactSection.style.display = "none";
+}
+
+function showHome() {
+  var homeSection = document.getElementById("homeSection");
+  homeSection.style.display = "block";
+
+  var contactSection = document.getElementById("contactSection");
+  contactSection.style.display = "none";
+
+  var productSection = document.getElementById("productSection");
+  productSection.style.display = "none";
+}
+
+function showProducts() {
+  var productSection = document.getElementById("productSection");
+  productSection.style.display = "block";
+
+  var homeSection = document.getElementById("homeSection");
+  homeSection.style.display = "none";
+
+  var aboutSection = document.getElementById("about");
+  aboutSection.style.display = "none";
+
+  var contactSection = document.getElementById("contactSection");
+  contactSection.style.display = "none";
+}
+
+function showContact() {
+  var contactSection = document.getElementById("contactSection");
+  contactSection.style.display = "block";
+
+  var homeSection = document.getElementById("homeSection");
+  homeSection.style.display = "none";
+
+  var aboutSection = document.getElementById("about");
+  aboutSection.style.display = "none";
+
+  var productSection = document.getElementById("productSection");
+  productSection.style.display = "none";
+}
+
 function displayProducts() {
   fetch("http://localhost:3000/getProducts", {
     method: "get",
@@ -19,7 +72,7 @@ function displayProducts() {
       let products = data.products;
 
       let currentPage = 1;
-      const productsPerPage = 4;
+      const productsPerPage = 6;
 
       function showPage(page) {
         currentPage = page;
@@ -30,7 +83,7 @@ function displayProducts() {
 
         productsToShow.forEach((product) => {
           productHtml += `
-        <div class="col-lg-3">
+        <div class="col-lg-2">
             <div class="card m-1">
                 <img class="img-responsive" src="images/${product.image}" style="width:auto ;height:auto;">
                 <div class="card-body">               
@@ -56,25 +109,25 @@ function displayProducts() {
         const totalPages = Math.ceil(products.length / productsPerPage);
         let paginationControls = "";
         if (currentPage > 1) {
-          paginationControls += `<button class="btn btn-dark btn-sm form-control m-1" onclick="showPage(
+          paginationControls += `<i class="fas fa-chevron-left" role="button" onclick="showPage(
             ${currentPage - 1}
-          )">Previous</button>`;
+          )"></i>`;
         }
         for (let i = 1; i <= totalPages; i++) {
-          paginationControls += `<button class="btn btn-dark btn-sm form-control m-1" onclick="showPage(
+          paginationControls += `<i class="bg-dark m-1" role="button" onclick="showPage(
             ${i}
-          )">${i}</button>`;
+          )">${i}</i>`;
         }
         if (currentPage < totalPages) {
-          paginationControls += `<button class="btn btn-dark btn-sm m-1 form-control" onclick="showPage(${
+          paginationControls += `<i class="fas fa-chevron-right m-1" onclick="showPage(${
             currentPage + 1
-          })">Next</button>`;
+          })"></i>`;
         }
         document.getElementById("paginationControls").innerHTML =
           paginationControls;
       }
 
-      showPage(2);
+      showPage(3);
     })
     .catch((error) => {
       console.error("Error getting products", error);
