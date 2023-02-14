@@ -79,19 +79,26 @@
                   </div>
                   <div class="container">
                     <div class="row">
-                      <div class="col-md-4">
-                        <h2>Products</h2>
-                        <p>Find the latest and greatest African products from our carefully curated selection.</p>
-                        <a class="fas fa-shopping-cart mt-0" href="#" role="button" onclick="showProducts()">Shop Now</a>
+                      <div class="card col-md-4 m-1">
+                        <h2 class="card-header">Products</h2>
+                        <p class="card-body">Find the latest and greatest African products from our carefully curated selection.<a class="fas fa-shopping-cart mt-0" href="#" role="button" onclick="showProducts()">Shop Now</a></p>
+                        
                       </div>
-                      <div class="col-md-4">
-                        <h2>Shipping</h2>
-                        <p>We ship worldwide so you can enjoy the best of Africa from anywhere in the world.</p>
+                      <div class="col-md-4 m-1">
+                        <div class="card">
+                          <div class="card-header"> <h2>Shipping</h2></div>
+                          <div class="card-body">
+                            <p>We ship worldwide so you can enjoy the best of Africa from anywhere in the world.</p></div>
+                        </div>
                       </div>
-                      <div class="col-md-4">
-                        <h2>Contact Us</h2>
-                        <p>Have a question or need help with your order? Get in touch with our friendly support team.</p>
-                        <a  class="fas fa-phone mt-0"href="#" role="button" onclick="showContact()">Contact</a>
+                      <div class="col-md-4 m-1">
+                        <div class="card">
+                          <div class="card-header"> <h2>Contact Us</h2></div>
+                          <div class="card-body">
+                            <p>Have a question or need help with your order? Get in touch with our friendly support team.<a  class="fas fa-phone mt-0"href="#" role="button" onclick="showContact()">Contact</a></p>
+                            
+                           </div>                      
+                        
                       </div>
                     </div>
                   </div>
@@ -100,7 +107,7 @@
               <section id="summarySection" class="mt-1">
                 <div class="container-fluid">
                   <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-3 m-1">
                       <div class="card text-white bg-primary">
                         <div class="card-header">Total products</div>
                         <div class="card-body">
@@ -108,7 +115,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 m-1">
                       <div class="card text-white bg-success">
                         <div class="card-header">Successful Orders</div>
                         <div class="card-body">
@@ -116,7 +123,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 m-1">
                       <div class="card text-white bg-warning">
                         <div class="card-header">Top products</div>
                         <div class="card-body">
@@ -124,7 +131,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 m-1">
                       <div class="card text-white bg-danger">
                         <div class="card-header">Total customers</div>
                         <div class="card-body">
@@ -170,8 +177,8 @@
                 </div>
                 <div class="card-footer ">
                   <section id="pagenationControls"> 
-                    <p>Pagenation</p>
-                    <div id="paginationControls" >  </div>
+                    <p class="text-center">Pagenation</p>
+                    <div class="text-center" id="paginationControls" >  </div>
                    </section>
                  </div>
               </div>

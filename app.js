@@ -5,7 +5,7 @@ function showAbout() {
   var aboutSection = document.getElementById("about");
   aboutSection.style.display = "block";
 
-  var productSection = document.getElementById("productsSection");
+  var productSection = document.getElementById("productSection");
   productSection.style.display = "none";
 
   var contactSection = document.getElementById("contactSection");
