@@ -1,3 +1,88 @@
+function showProductsSection() {
+  let productsTableSection = document.getElementById("productsTableSection");
+  productsTableSection.style.display = "block";
+
+  let summarySection = document.getElementById("summarySection");
+  summarySection.style.display = "none";
+
+  let ordersSection = document.getElementById("ordersSection");
+  ordersSection.style.display = "none";
+
+  let addUserSection = document.getElementById("addUserSection");
+  addUserSection.style.display = "none";
+
+  let addProductSection = document.getElementById("addProductSection");
+  addProductSection.style.display = "none";
+}
+
+function showAddProductSection() {
+  let productsTableSection = document.getElementById("productsTableSection");
+  productsTableSection.style.display = "none";
+
+  let summarySection = document.getElementById("summarySection");
+  summarySection.style.display = "none";
+
+  let ordersSection = document.getElementById("ordersSection");
+  ordersSection.style.display = "none";
+
+  let addUserSection = document.getElementById("addUserSection");
+  addUserSection.style.display = "none";
+
+  let addProductSection = document.getElementById("addProductSection");
+  addProductSection.style.display = "block";
+}
+
+function showAddUserSection() {
+  let productsTableSection = document.getElementById("productsTableSection");
+  productsTableSection.style.display = "none";
+
+  let summarySection = document.getElementById("summarySection");
+  summarySection.style.display = "none";
+
+  let ordersSection = document.getElementById("ordersSection");
+  ordersSection.style.display = "none";
+
+  let addUserSection = document.getElementById("addUserSection");
+  addUserSection.style.display = "block";
+
+  let addProductSection = document.getElementById("addProductSection");
+  addProductSection.style.display = "none";
+}
+
+function showSummarySection() {
+  let productsTableSection = document.getElementById("productsTableSection");
+  productsTableSection.style.display = "none";
+
+  let summarySection = document.getElementById("summarySection");
+  summarySection.style.display = "block";
+
+  let ordersSection = document.getElementById("ordersSection");
+  ordersSection.style.display = "none";
+
+  let addUserSection = document.getElementById("addUserSection");
+  addUserSection.style.display = "none";
+
+  let addProductSection = document.getElementById("addProductSection");
+  addProductSection.style.display = "none";
+}
+
+function showOrdersSection() {
+  let productsTableSection = document.getElementById("productsTableSection");
+  productsTableSection.style.display = "none";
+
+  let summarySection = document.getElementById("summarySection");
+  summarySection.style.display = "none";
+
+  let ordersSection = document.getElementById("ordersSection");
+  ordersSection.style.display = "block";
+
+  let addUserSection = document.getElementById("addUserSection");
+  addUserSection.style.display = "none";
+
+  let addProductSection = document.getElementById("addProductSection");
+  addProductSection.style.display = "none";
+}
+
 document.getElementById("saveProduct").addEventListener("click", () => {
   saveProductData();
 });

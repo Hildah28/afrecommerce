@@ -85,12 +85,13 @@ function displayProducts() {
           productHtml += `
         <div class="col-lg-2">
             <div class="card m-1">
-                <img class="img-responsive" src="images/${product.image}" style="width:auto ;height:auto;">
+            <div class="card-header">
+            <img class="img-responsive" src="images/${product.image}" style="width:100%;height:80%">
+            <h5 class="card-text text-sm text-dark">${product.name}</h5>
+            </div>                
                 <div class="card-body">               
-                    <h5 class="card-title text-sm text-dark">${product.name}</h5>
                     <h5 class="card-text text-sm text-danger">Ksh${product.price}</h5>
                     <p class="card-text text-sm">
-                        <i class="fas fa-star text-warning"></i>
                         <i class="fas fa-star text-warning"></i>
                         <i class="fas fa-star text-warning"></i>
                         <i class="fas fa-star text-warning"></i>
@@ -114,7 +115,7 @@ function displayProducts() {
           )"></i>`;
         }
         for (let i = 1; i <= totalPages; i++) {
-          paginationControls += `<i class="bg-dark m-1" role="button" onclick="showPage(
+          paginationControls += `<i class="bg-dark m-1 text-white" role="button" onclick="showPage(
             ${i}
           )">${i}</i>`;
         }
@@ -137,28 +138,26 @@ displayProducts();
 
 function addCart(button) {
   let card = button.closest(".card");
-  const name = card.querySelector(".card-title").textContent;
+  const name = card.querySelector(".card-text").textContent;
   const price = card.querySelector(".text-danger").textContent;
   console.log(`Name: ${name}, Price: ${price},image: ${name}.jpg`);
-  document.getElementById(
-    "productModalBody"
-  ).innerHTML = `<div class="row"><div class="col-12">
-                    <div class="card m-1">                    
-                          <div class="card-body">    
-                            <img class="img-responsive m-auto border-0 form-control" src="images/${name}.jpg" alt="product image" style="height:50%;width:50%" />           
-                            <h5 class="card-title text-sm text-dark">${name}</h5>
+  document.getElementById("productModalBody").innerHTML = `<div class="row">
+                  <div class="col-12">
+                    <div class="card m-1">  
+                          <h5 class="card-header text-sm text-dark"><img class="img-responsive m-auto border-0 form-control" src="images/${name}.jpg" alt="product image" style="height:100%;width:100%" />${name}</h5>                  
+                          <div class="card-body"> 
                             <h5 class="card-text text-sm text-danger">Ksh${price}</h5>
                             <p class="card-text text-sm">
                                 <i class="fas fa-star text-warning"></i>
                                 <i class="fas fa-star text-warning"></i>
                                 <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>                                
                             </p>
-                            <input type="number"  class="bg-primary form-control" placeholder="Enter No of items" id="orderNoItems" >
                           </div>
+                          <input type="number"  class="card-footer bg-dark form-control text-white" placeholder="Enter No of items" id="orderNoItems" >                          
                     </div>        
-                  </div></div>`;
+                  </div>
+                  </div>`;
 }
 
 function placeOrder() {
