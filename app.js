@@ -91,10 +91,11 @@ function displayProducts() {
             </div>                
                 <div class="card-body">               
                     <h5 class="card-text text-sm text-danger">Ksh${product.price}</h5>
-                    <p class="card-text text-sm">
+                    <p class="d-flex justfy-content-centre">
                         <i class="fas fa-star text-warning"></i>
                         <i class="fas fa-star text-warning"></i>
                         <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>                        
                         <i class="fas fa-star text-warning"></i>
                     </p>
                     <button type="button"  class="btn btn-success" type="button" data-toggle="modal" data-target="#productModal" id="addCartBtn" onclick="addCart(this)">Add cart <i class="fas fa-shopping-cart"></i> </button>
@@ -140,19 +141,24 @@ function addCart(button) {
   let card = button.closest(".card");
   const name = card.querySelector(".card-text").textContent;
   const price = card.querySelector(".text-danger").textContent;
-  console.log(`Name: ${name}, Price: ${price},image: ${name}.jpg`);
   document.getElementById("productModalBody").innerHTML = `<div class="row">
                   <div class="col-12">
                     <div class="card m-1">  
-                          <h5 class="card-header text-sm text-dark"><img class="img-responsive m-auto border-0 form-control" src="images/${name}.jpg" alt="product image" style="height:100%;width:100%" />${name}</h5>                  
+                          <img class="img-responsive m-auto border-0 form-control" src="images/${name}.jpg" alt="product image" style="height:100%;width:100%" />
+                          <h5 class="card-header text-sm text-dark">${name}</h5>   
+                          
+                          <div class="text-success text-center bg-dark" id="addOrderMessage"></div>               
                           <div class="card-body"> 
                             <h5 class="card-text text-sm text-danger">Ksh${price}</h5>
-                            <p class="card-text text-sm">
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>                                
-                            </p>
+                            <div class="d-flex justify-content-center" style="width: 100%;">
+                                  <i class="fas fa-star text-warning"></i>
+                                  <i class="fas fa-star text-warning"></i>
+                                  <i class="fas fa-star text-warning"></i>
+                                  <i class="fas fa-star text-warning"></i>
+                                  <i class="fas fa-star text-warning"></i>                               
+                            </div>
+
+
                           </div>
                           <input type="number"  class="card-footer bg-dark form-control text-white" placeholder="Enter No of items" id="orderNoItems" >                          
                     </div>        
@@ -160,11 +166,73 @@ function addCart(button) {
                   </div>`;
 }
 
-function placeOrder() {
-  let numberOfOrders = 0;
-  numberOfOrders = document.getElementById("cartNoItems").value;
-  console.log(`Number of orders: ${numberOfOrders}`);
-  numberOfOrders =
-    parseInt(numberOfOrders) + document.getElementById("orderNoItems").value;
-  document.getElementById("cartNoItems").value = numberOfOrders;
+function addUser() {
+  let nameInput = document.getElementById("nameInput").value;
+  let usernameInput = document.getElementById("usernameInput").value;
+  let passwordInput = document.getElementById("passwordInput").value;
+  let emailInput = document.getElementById("emailInput").value;
+  let accountTypeSelect = document.getElementById("accountTypeSelect").value;
+  let userData = {
+    nameInput: nameInput,
+    usernameInput: usernameInput,
+    passwordInput: passwordInput,
+    accountTypeSelect: accountTypeSelect,
+    emailInput: emailInput,
+  };
+
+  fetch("http://localhost:3000/addUser", {
+    method: "post",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(userData),
+  })
+    .then((response) => response.json)
+    .then((data) => {
+      console.log("User added successfully");
+      document.getElementById("addUserMessage").innerHTML =
+        "User added successfully";
+    })
+    .catch((error) => {
+      console.log(error + "Error adding user");
+    });
+}
+
+function addOrder(button) {
+  const modalBody = document.getElementById("productModalBody");
+  const productName = modalBody.querySelector("h5").textContent.trim();
+  const totalPrice = modalBody.querySelector(".card-text").textContent.trim();
+  const noOfItems = modalBody.querySelector("#orderNoItems").value;
+  const addOrderMessage = modalBody.querySelector("#addOrderMessage");
+
+  const clientId = "clientId";
+  const productId = productName;
+  const noItems = noOfItems;
+  const orderDate = new Date();
+  const orderStatus = "Active";
+  const paymentStatus = "Pending";
+  const deliveryStatus = "Pending";
+  const orderTime = orderDate.getTime();
+  const orderData = {
+    clientId,
+    productId,
+    noItems,
+    orderDate,
+    orderStatus,
+    paymentStatus,
+    deliveryStatus,
+    totalPrice,
+    orderTime,
+  };
+  fetch("http://localhost:3000/addOrder", {
+    method: "post",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(orderData),
+  })
+    .then((response) => response.json)
+    .then((data) => {
+      addOrderMessage.innerHTML = "Order added successfully";
+      alert("Order placed successfully");
+    })
+    .catch((error) => {
+      console.log(error + "Error adding order");
+    });
 }

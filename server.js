@@ -56,9 +56,78 @@ app.get("/getProducts", (req, res) => {
       res.status(500).send("Failed to get product data");
     } else {
       res.status(200).send({ products: results });
-      console.log(results);
     }
   });
+});
+
+//add user route
+app.post("/addUser", (req, res) => {
+  try {
+    const {
+      nameInput,
+      usernameInput,
+      passwordInput,
+      accountTypeSelect,
+      emailInput,
+    } = req.body;
+    console.log(nameInput);
+    const addUserQuery = `INSERT INTO users (name, username, password,accountType,email) VALUES (?, ?, ?, ?,?)`;
+    connection.query(
+      addUserQuery,
+      [nameInput, usernameInput, passwordInput, accountTypeSelect, emailInput],
+      (error, results) => {
+        if (error) {
+          console.log("Failed to add user" + error);
+          res.status(500).send("Failed to add user");
+        } else {
+          res.status(200).send("User added successfully");
+        }
+      }
+    );
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+app.post("/addOrder", (req, res) => {
+  try {
+    const {
+      clientId,
+      productId,
+      noItems,
+      orderDate,
+      orderStatus,
+      paymentStatus,
+      deliveryStatus,
+      totalPrice,
+      orderTime,
+    } = req.body;
+    const addOrderQuery =
+      "INSERT INTO orders (clientId, productId, noItems, orderDate, orderStatus, paymentStatus, deliveryStatus,totalPrice,orderTime) VALUES (?, ?, ?, ?, ?, ?, ?,?,?)";
+    connection.query(
+      addOrderQuery,
+      [
+        clientId,
+        productId,
+        noItems,
+        orderDate,
+        orderStatus,
+        paymentStatus,
+        deliveryStatus,
+        totalPrice,
+        orderTime,
+      ],
+      (error, results) => {
+        if (error) {
+          console.log("Failed to add order" + error);
+        } else {
+          console.log("Order added successfully");
+        }
+      }
+    );
+  } catch (error) {
+    console.log("Failed to add order");
+  }
 });
 
 const port = 3000;

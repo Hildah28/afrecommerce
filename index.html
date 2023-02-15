@@ -10,6 +10,8 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-DGln9iSTN81E/gOFT90zL2Qd3PqA3JFpH1eNScYkDNTnKkkBzlCFI+Hf8AYPQJd04CwAJKQrLrA+SGlJMx/O1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">                           
     <title>Afrecommerce</title>
@@ -53,12 +55,13 @@
                                     </li> 
                                     <li>
                                       
-                                      <a class="nav-link text-white text-right fas fa-sign-in-alt" href="/components/login.html">Login</a>
-
-                                    </li>                  
+                                       </li>                  
                                 </ul>
 
-                                  <i class="fas fa-shopping-bag  text-dark ml-auto"></i> 
+                                 <div class="ml-auto">
+                                <a class="nav-link text-white text-right fas fa-user-circle " href="/components/login.html">Account</a>
+                                 <i class="fas fa-shopping-cart  text-dark "></i> 
+                                 </div>
                                                                                               
                                 </div>
                             </nav>
@@ -182,12 +185,9 @@
                       <option value="accessories">Accessories</option>
                     </select>
                   </div>
-                  <div class="col-1  d-flex justify-content-end">
-                    <label for="productSearchInput" class="fas fa-search"></label>
-                  </div>
-                    <div class="col-8 ">
-                       <input class="form-control text-dark" type="search" placeholder="Product" id="productSearchInput" name="productSearch" />
-                    </div>
+                    <div class="col-8">
+                      <input class="form-control text-dark" type="search" placeholder=' Search products'
+                      id="productSearchInput" name="productSearch" aria-label="Search"/></div>
                     
                     </div>
                 </div>
@@ -325,6 +325,7 @@
                           <div class="modal-content">
                             <div class="modal-header">
                               <h5 class="modal-title" id="productModalLabel">Make Order</h5>
+                              <div id="addOrderMessage"></div>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                               </button>
@@ -333,9 +334,10 @@
                               
                             </div>
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-dark fas fa-times" data-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-success fas fa-shopping-cart" onclick="placeOrder()">Place order</button>
-                            </div>
+                              <button type="button" class="btn btn-success fas fa-shopping-cart" onclick="addOrder(this)">Place order</button>
+                          
+                              <button type="button" class="btn btn-success fas fa-shopping-bag"  data-dismiss="modal">Continue Shopping</button>                            
+                                </div>
                           </div>
                         </div>
                       </div>           

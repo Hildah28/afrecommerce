@@ -263,32 +263,44 @@
                   <div class="card-header text-primary">
                     <h4>Sign up</h4>
                   </div>
-                  <label for="Account type">Account type</label>
-                  <select id="accounttype" class="form-control">
-                    <option value="1">Admin</option>
-                    <option value="2">User</option>
+                  <div id="addUserMessage" class="text-success"></div>
+                  <label for="accountTypeSelect">Account type</label>
+                  <select id="accountTypeSelect" class="form-control">
+                    <option value="Admin">Admin</option>
+                    <option value="Customer">Customer</option>
                   </select>
-                  <label for="name">Name</label>
+                  <label for="nameInput">Name</label>
                   <input
-                    id="name"
+                    id="nameInput"
                     type="text"
                     class="form-control"
                     placeholder="Name"
                     required
                   />
-                  <label for="username" class="card-title text-sm"
+                  <label for="usernameInput" class="card-title text-sm"
                     >Username</label
                   >
                   <input
-                    id="username"
+                    id="usernameInput"
                     type="text"
                     class="form-control"
                     placeholder="Username"
                     required
                   />
-                  <label for="password">Password</label>
+
+                  <label for="emailInput" class="card-title text-sm"
+                    >Email</label
+                  >
                   <input
-                    id="password"
+                    type="email"
+                    class="form-control"
+                    required
+                    placeholder="email@com"
+                    id="emailInput"
+                  />
+                  <label for="passwordInput">Password</label>
+                  <input
+                    id="passwordInput"
                     type="password"
                     class="form-control"
                     placeholder="Password"
@@ -307,7 +319,11 @@
                     required
                   />
                   <div class="card-footer m-auto">
-                    <button class="btn btn-dark m-1" type="submit">
+                    <button
+                      class="btn btn-dark m-1"
+                      type="submit"
+                      onclick="addUser()"
+                    >
                       Sign up
                     </button>
                     <label class="text-danger">Already have account?</label>
@@ -410,5 +426,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="dashbord.js"></script>
+    <script src="/app.js"></script>
   </body>
 </html>
