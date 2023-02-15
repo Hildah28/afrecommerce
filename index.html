@@ -22,8 +22,8 @@
                   <div class="row">
                     <div class="col-12"> 
                       <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
+                        <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon text-white"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav">
@@ -39,14 +39,18 @@
                                 <li class="nav-item">
                                     <a class="nav-link text-white" href="#" onclick="showContact()"><i class="fas fa-phone"></i> Contact</a>
                                 </li>
-                            </ul>
-                            <div class="row ml-auto">
-                                <a class="nav-link text-white text-right" href="/components/login.html"><span style="font-size: 1em;">  <i class="fas fa-user-circle"></i> </span>Account</a>
+                                <li class="nav-item ml-auto">
+                                  <a class="nav-link text-white text-right" href="/components/login.html"><span style="font-size: 1em;">  <i class="fas fa-user-circle"></i> </span>Account</a>
+                                 
+                              </li>
+                              <li>
                                 <a class="nav-link "><span style="font-size: 1em;">
                                   <i class="fas fa-shopping-cart text-dark"></i>
                                 </span>
                                 </i></a>
-                            </div>
+                              </li>
+                            </ul>
+                           
                         </div>
                     </nav>
                     
@@ -69,20 +73,20 @@
                     <div class="row">
                      <div class="col-md-4 mt-1 "> 
                       <div class="card ">
-                        <h4 class="card-header">Products</h4>
+                        <h4 class="card-header text-white bg-primary">Products</h4>
                         <p class="card-body">Find the latest and greatest African products from our carefully curated selection.<a class="fas fa-shopping-cart mt-0" href="#" role="button" onclick="showProducts()"></a></p>
                       </div>
                      </div>
                       <div class="col-md-4 mt-1">
-                        <div class="card">
-                          <div class="card-header"> <h4>Shipping</h4></div>
+                        <div class="card ">
+                          <div class="card-header text-white bg-primary"> <h4>Shipping</h4></div>
                           <div class="card-body">
                             <p>We ship worldwide so you can enjoy the best of Africa from anywhere in the world.Shopping at your door steps</p></div>
                         </div>
                       </div>
                       <div class="col-md-4 mt-1">
-                        <div class="card">
-                          <div class="card-header"> <h4>Contact Us</h4></div>
+                        <div class="card ">
+                          <div class="card-header text-white bg-primary"> <h4>Contact Us</h4></div>
                           <div class="card-body">
                             <p>Have a question or need help with your order? Get in touch with our friendly support team.<a  class="fas fa-phone mt-0"href="#" role="button" onclick="showContact()"></a></p>
                             
@@ -92,46 +96,7 @@
                     </div>
                   </div>
 
-                  <!--Completed sales-->
-              <section id="summarySection" class="mt-1">
-                <div class="container-fluid">
-                  <div class="row">
-                    <div class="col-md-3 mt-1">
-                      <div class="card text-white bg-primary">
-                        <div class="card-header">Total products</div>
-                        <div class="card-body">
-                          <h4 class="card-title text-center" id="totalProducts"></h4>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-3 mt-1">
-                      <div class="card text-white bg-success">
-                        <div class="card-header">Successful Orders</div>
-                        <div class="card-body">
-                          <h4 class="card-title text-center">0</h4>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-3 mt-1">
-                      <div class="card text-white bg-warning">
-                        <div class="card-header">Top products</div>
-                        <div class="card-body">
-                          <h4 class="card-title text-center" id="topProducts"></h4>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-3 mt-1">
-                      <div class="card text-white bg-danger">
-                        <div class="card-header">Total customers</div>
-                        <div class="card-body">
-                          <h4 class="card-title text-center">0</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-                </section>
+                 
 
 
 
@@ -160,6 +125,51 @@
                 
 
 
+ <!--Completed sales-->
+ <section id="summarySection" class="mt-1">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3 mt-1">
+        <div class="card text-white bg-primary">
+          <div class="card-header">Total products</div>
+          <div class="card-body">
+            <h4 class="card-title text-center" id="totalProducts"></h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mt-1">
+        <div class="card text-white bg-success">
+          <div class="card-header">Successful Orders</div>
+          <div class="card-body">
+            <h4 class="card-title text-center">0</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mt-1">
+        <div class="card text-white bg-warning">
+          <div class="card-header">Top products</div>
+          <div class="card-body">
+            <h4 class="card-title text-center" id="topProducts"></h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mt-1">
+        <div class="card text-white bg-danger">
+          <div class="card-header">Total customers</div>
+          <div class="card-body">
+            <h4 class="card-title text-center">0</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  </section>
+
+
+
+
+<!--Products section-->
               <div class="card" id="productSection" style="display:none;">
                 <div class="card-header">
                   <h4>Available products</h4>
