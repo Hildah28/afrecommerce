@@ -75,6 +75,8 @@ function displayProducts() {
       const productsPerPage = 6;
 
       function showPage(page) {
+        document.getElementById("totalProducts").innerHTML=products.length;        
+        document.getElementById("topProducts").innerHTML=products.length;
         currentPage = page;
         let productHtml = "";
         const startIndex = (page - 1) * productsPerPage;
