@@ -45,9 +45,9 @@
                   class="nav-link"
                   href="#"
                   role="button"
-                  onclick="showProductsSection()"
+                  onclick="selectProducts()"
                 >
-                  <i class="fas fa-shopping-cart me-1"></i>Products
+                  <i class="fas fa-shopping-cart me-1"> </i>Products
                 </a>
               </li>
 
@@ -78,7 +78,7 @@
                   class="nav-link"
                   href="#"
                   role="button"
-                  onclick="showOrdersSection()"
+                  onclick="getOrdersData()"
                 >
                   <i class="fas fa-shopping-basket me-1"></i>Orders
                 </a>
@@ -225,9 +225,9 @@
           <div class="card-body row">
             <div class="col-md-3">
               <div class="card text-white bg-primary mb-1">
-                <div class="card-header">Total Sales</div>
+                <div class="card-header">Top products</div>
                 <div class="card-body">
-                  <h4 class="card-title">$0</h4>
+                  <h4 class="card-title" id="topProducts">$0</h4>
                 </div>
               </div>
             </div>
@@ -241,9 +241,9 @@
             </div>
             <div class="col-md-3">
               <div class="card text-white bg-warning mb-3">
-                <div class="card-header">Average Order Value</div>
+                <div class="card-header">Total products</div>
                 <div class="card-body">
-                  <h4 class="card-title">0</h4>
+                  <h4 class="card-title" id="totalProducts">0</h4>
                 </div>
               </div>
             </div>
@@ -370,7 +370,10 @@
                       <th>Unit price</th>
                     </tr>
                   </thead>
+                  <tbody id="dashboardProductsRow"></tbody>
                 </table>
+
+                <div id="productsPaginationControls"></div>
               </div>
             </div>
           </div>
@@ -390,9 +393,13 @@
                       <th>Order</th>
                       <th>Client</th>
                       <th>Product</th>
-                      <th>Quanity</th>
+                      <th>No of items</th>
+                      <th>Date</th>
+                      <th>Status</th>
                     </thead>
+                    <tbody id="ordersSectionTable"></tbody>
                   </table>
+                  <div id="ordersSectionPagination"></div>
                 </div>
               </div>
             </div>

@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
+const cors = require("cors");
 
 const connection = mysql.createConnection({
   host: "localhost",
@@ -19,6 +20,7 @@ connection.connect((error) => {
 });
 
 app.use(bodyParser.json());
+app.use(cors());
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -129,6 +131,19 @@ app.post("/addOrder", (req, res) => {
     console.log("Failed to add order");
   }
 });
+
+app.get("/getOrders", (req, res) => {
+  const selectQuerry = "select * from orders";
+  connection.query(selectQuerry, (error, results) => {
+    if (error) {
+      res.status(500).send("Failed to get orders data");
+    } else {
+      res.status(200).send({ products: results });
+    }
+  });
+});
+
+
 
 const port = 3000;
 app.listen(port, () => {
