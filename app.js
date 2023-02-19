@@ -208,9 +208,21 @@ function addUser() {
       console.log("User added successfully");
       document.getElementById("addUserMessage").innerHTML =
         "User added successfully";
+      const toast = document.createElement("div");
+      toast.classList.add("toast");
+      toast.innerHTML = "User added successfully";
+
+      // Add the toast to the page
+      document.getElementById("addUserMessage").appendChild(toast);
+
+      // Show the toast for a short amount of time
+      setTimeout(() => {
+        toast.remove();
+      }, 3000);
     })
     .catch((error) => {
       console.log(error + "Error adding user");
+      showToast("Error adding user");
     });
 }
 
@@ -219,6 +231,7 @@ function addOrder(button) {
   const productName = modalBody.querySelector("h5").textContent.trim();
   const totalPrice = modalBody.querySelector(".card-text").textContent.trim();
   const noOfItems = modalBody.querySelector("#orderNoItems").textContent.trim();
+  const addOrderMessage = modalBody.querySelector("#addOrderMessage");
   const clientId = "clientId";
   const productId = productName;
   const noItems = noOfItems;
@@ -238,7 +251,6 @@ function addOrder(button) {
     totalPrice,
     orderTime,
   };
-  console.log(orderData);
   fetch("http://localhost:3000/addOrder", {
     method: "post",
     headers: { "content-type": "application/json" },
@@ -248,13 +260,15 @@ function addOrder(button) {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
+
+      console.log(response);
       return response.json();
     })
     .then((data) => {
       alert("Order added successfully");
-      const addOrderMessage = document.getElementById("addOrderMessage");
+      console.error("Order added successfully:", data);
       addOrderMessage.innerHTML = "Order added successfully";
-      console.log("Order placed successfully");
+      showToast("Order added successfully"); // Call the showToast() function to display a toast message
     })
     .catch((error) => {
       console.error("Error adding order:", error);
@@ -262,6 +276,20 @@ function addOrder(button) {
         "Failed to add order. Please try again later.";
       alert("Failed to place order. Please try again later.");
     });
+}
+
+function showToast(message) {
+  const toast = document.createElement("div");
+  toast.classList.add("toast");
+  toast.innerHTML = message;
+
+  // Add the toast to the page
+  document.body.appendChild(toast);
+
+  // Show the toast for a short amount of time
+  setTimeout(() => {
+    toast.remove();
+  }, 3000);
 }
 
 function makePayment() {
