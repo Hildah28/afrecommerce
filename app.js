@@ -137,6 +137,7 @@ function displayProducts() {
     });
 }
 //displayProducts();
+
 function addCart(button) {
   let card = button.closest(".card");
   const name = card.querySelector(".card-text").textContent;
@@ -218,7 +219,6 @@ function addOrder(button) {
   const productName = modalBody.querySelector("h5").textContent.trim();
   const totalPrice = modalBody.querySelector(".card-text").textContent.trim();
   const noOfItems = modalBody.querySelector("#orderNoItems").textContent.trim();
-
   const clientId = "clientId";
   const productId = productName;
   const noItems = noOfItems;
@@ -298,67 +298,50 @@ function selectProducts() {
       }
     })
     .then((data) => {
-      // console.log(data);
-      // let productHtml = [];
-      // data.products.slice(1, 50).forEach((product) => {
-      //   const productName = product.name;
-      //   const category = product.category;
-      //   const quantity = product.quantity;
-      //   const price = product.price;
-      //   productHtml += `<tr><td>${productName}</td><td>${category}</td><td>${quantity}</td><td>${price}</td></tr>`;
-      // });
-      // // Insert the HTML markup into the DOM
-      // document.getElementById("dashboardProductsRow").innerHTML = productHtml;
+      window.showProductPage = showProductPage;
+      let products = data.products;
+      let currentPage = 1;
+      const productsPerPage = 6;
 
-      const productsPerPage = 5; // Set the number of products to display per page
-      let currentPage = 1; // Initialize the current page to 1
-
-      function displayProductsDashboard(data, page) {
+      function showProductPage(page) {
+        document.getElementById("totalProducts").innerHTML = products.length;
+        document.getElementById("topProducts").innerHTML = products.length;
         currentPage = page;
-        const productsHtml = [];
+        let productHtml = "";
         const startIndex = (page - 1) * productsPerPage;
         const endIndex = startIndex + productsPerPage;
-        data.products.slice(startIndex, endIndex).forEach((product) => {
-          const productName = product.name;
-          const category = product.category;
-          const quantity = product.quantity;
-          const price = product.price;
-          const productHtml = `<tr><td>${productName}</td><td>${category}</td><td>${quantity}</td><td>${price}</td></tr>`;
-          productsHtml.push(productHtml);
+        const productsToShow = products.slice(startIndex, endIndex);
+
+        productsToShow.forEach((product) => {
+          productHtml += `<tr><td>${product.name}</td><td>${product.category}</td><td>${product.quantity}</td><td>${product.price}</td></tr>`;
         });
-
-        // Insert the HTML markup into the DOM
-        document.getElementById("dashboardProductsRow").innerHTML =
-          productsHtml.join("");
-
-        // Update the page navigation
-        updatePageNavigation(data);
+        document.getElementById("dashboardProductsRow").innerHTML = productHtml;
+        updatePaginationControls();
       }
 
-      function updatePageNavigation(data) {
-        const totalPages = Math.ceil(data.products.length / productsPerPage);
+      function updatePaginationControls() {
+        const totalPages = Math.ceil(products.length / productsPerPage);
         let paginationControls = "";
         if (currentPage > 1) {
-          paginationControls += `<i class="fas fa-chevron-left" role="button" onclick="displayProductsDashboard(${JSON.stringify(
-            data
-          )}, ${currentPage - 1})"></i>`;
+          paginationControls += `<i class="fas fa-chevron-left" role="button" onclick="showProductPage(
+            ${currentPage - 1}
+          )"></i>`;
         }
         for (let i = 1; i <= totalPages; i++) {
-          paginationControls += `<i class="bg-dark m-1 text-white" role="button" onclick="displayProductsDashboard(${JSON.stringify(
-            data
-          )}, ${i})">${i}</i>`;
+          paginationControls += `<i class="bg-dark m-1 text-white" role="button" onclick="showProductPage(
+            ${i}
+          )">${i}</i>`;
         }
         if (currentPage < totalPages) {
-          paginationControls += `<i class="fas fa-chevron-right m-1" onclick="displayProductsDashboard(${JSON.stringify(
-            data
-          )}, ${currentPage + 1})"></i>`;
+          paginationControls += `<i class="fas fa-chevron-right m-1" onclick="showProductPage(${
+            currentPage + 1
+          })"></i>`;
         }
         document.getElementById("productsPaginationControls").innerHTML =
           paginationControls;
       }
 
-      // Display the first page of products
-      displayProductsDashboard(data, 1);
+      showProductPage(3);
     })
     .catch((error) => {
       console.log("Error getting products" + error);
@@ -380,11 +363,14 @@ function getOrdersData() {
       }
     })
     .then((data) => {
+      window.showOrderPage = showOrderPage;
       let products = data.products;
       let currentPage = 1;
       const productsPerPage = 6;
 
-      function showOrdersPage(page) {
+      function showOrderPage(page) {
+        document.getElementById("totalProducts").innerHTML = products.length;
+        document.getElementById("topProducts").innerHTML = products.length;
         currentPage = page;
         let productHtml = "";
         const startIndex = (page - 1) * productsPerPage;
@@ -395,24 +381,24 @@ function getOrdersData() {
           productHtml += `<tr><td>${product.orderId}</td><td>${product.clientId}</td><td>${product.productId}</td><td>${product.noItems}</td><td>${product.orderDate}</td><td>${product.orderStatus}</td></tr>`;
         });
         document.getElementById("ordersSectionTable").innerHTML = productHtml;
-        updatePaginationControls(showOrdersPage);
+        updatePaginationControls();
       }
 
       function updatePaginationControls() {
         const totalPages = Math.ceil(products.length / productsPerPage);
         let paginationControls = "";
         if (currentPage > 1) {
-          paginationControls += `<i class="fas fa-chevron-left" role="button" onclick="showOrdersPage(
+          paginationControls += `<i class="fas fa-chevron-left" role="button" onclick="showOrderPage(
             ${currentPage - 1}
           )"></i>`;
         }
         for (let i = 1; i <= totalPages; i++) {
-          paginationControls += `<i class="bg-dark m-1 text-white" role="button" onclick="showOrdersPage(
+          paginationControls += `<i class="bg-dark m-1 text-white" role="button" onclick="showOrderPage(
             ${i}
           )">${i}</i>`;
         }
         if (currentPage < totalPages) {
-          paginationControls += `<i class="fas fa-chevron-right m-1" onclick="showOrdersPage(${
+          paginationControls += `<i class="fas fa-chevron-right m-1" onclick="showOrderPage(${
             currentPage + 1
           })"></i>`;
         }
@@ -420,7 +406,7 @@ function getOrdersData() {
           paginationControls;
       }
 
-      showOrdersPage(3);
+      showOrderPage(3);
     })
     .catch((error) => {
       console.log(error);
