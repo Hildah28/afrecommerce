@@ -17,11 +17,11 @@
     <title>Afrecommerce</title>
     <link rel="stylesheet" href="/components/style.css">
   </head>
-  <body class="bg-dark">
+  <body class="bgBody">
     <div class="card container">
                   <div class="row">
                     <div class="col-12"> 
-                      <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+                      <nav class="navbar navbar-expand-lg navbar-light bgColor fixed-top container">
                         <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon text-white"></span>
                         </button>
@@ -61,32 +61,32 @@
 
 
 
-                <section id="homeSection" style="display: block;" class="m-1">
+                <section id="homeSection" style="display: block;" class="mt-1">
                   <div class="jumbotron jumbotron-fluid">
                     <div class="container text-center">
                       <h1>Welcome to Afrecommerce</h1>
                       <p class="lead">Your one-stop shop for African products.</p>
-                      <a class="btn btn-secondary btn-lg " href="#" role="button" onclick="showProducts()"> <span style="font-size:1em"><i class="fas fa-shopping-cart"></i></span>Shop Now</a>
+                      <a class="btn btnColor text-white btn-lg " href="#" role="button" onclick="showProducts()"> <span style="font-size:1em"><i class="fas fa-shopping-cart"></i></span>Shop Now</a>
                     </div>
                   </div>
                   <div class="container">
                     <div class="row">
                      <div class="col-md-4 mt-1 "> 
                       <div class="card ">
-                        <h4 class="card-header text-white bg-secondary"><i class="fas fa-box fa-3x"></i>Products</h4>
+                        <h4 class="card-header text-white bgColor"><i class="fas fa-box fa-3x"></i>Products</h4>
                         <p class="card-body">Find the latest and greatest African products from our carefully curated selection.</p>
                       </div>
                      </div>
                       <div class="col-md-4 mt-1">
                         <div class="card ">
-                          <div class="card-header text-white bg-secondary"><h4><i class="fas fa-shipping-fast fa-3x"></i> Shipping</h4></div>
+                          <div class="card-header text-white bgColor"><h4><i class="fas fa-shipping-fast fa-3x"></i> Shipping</h4></div>
                           <div class="card-body">
                             <p>We ship worldwide so you can enjoy the best of Africa from anywhere in the world.Shopping at your door steps</p></div>
                         </div>
                       </div>
                       <div class="col-md-4 mt-1">
                         <div class="card ">
-                          <div class="card-header text-white bg-secondary"><h4> <i class="fas fa-phone fa-3x"></i>Contact Us</h4></div>
+                          <div class="card-header text-white bgColor"><h4> <i class="fas fa-phone fa-3x"></i>Contact Us</h4></div>
                           <div class="card-body">
                             <p>Have a question or need help with your order? Get in touch with our friendly support team.</p>
                             
@@ -128,11 +128,11 @@
 
 
                               <!--Completed sales-->
-                              <section id="summarySection" class="mt-1 mb-1">
+                              <section id="summarySection" class=" mb-10" style="margin:60px">
                                 <div class="container-fluid">
                                   <div class="row">
                                     <div class="col-md-3 mt-1">
-                                      <div class="card text-white bg-secondary">
+                                      <div class="card text-white bgColor">
                                         <div class="card-header"><i class="fas fa-3x fa-box"></i>Total products</div>
                                         <div class="card-body">
                                           <h4 class="card-title text-center" id="totalProducts" >0</h4>
@@ -141,7 +141,7 @@
                                     </div>
                                     <div class="col-md-3 mt-1">
                                       <div class="card text-white bg-success">
-                                        <div class="card-header"><i class="fas fa-3x fa-shopping-cart"></i>Successful Orders</div>
+                                        <div class="card-header"><i class="fas fa-3x fa-shopping-cart"></i>Orders</div>
                                         <div class="card-body">
                                           <h4 class="card-title text-center">0</h4>
                                         </div>
@@ -360,7 +360,7 @@
                                 <label for="message">Message</label>
                                 <textarea class="form-control" id="message" rows="3"></textarea>
                               </div>
-                              <button type="submit" class="btn btn-secondary">Send</button>
+                              <button type="submit" class="btn btnColor text-white">Send</button>
                             </form>
                           </div>
                         </div>
@@ -373,17 +373,54 @@
 
 
               <!--website footer-->
-              <div class="row">
-                <div class="col-12">
-                  <footer class="bg-secondary">
-                    <div class="container">
-                      <p class="text-center text-white">
-                        Copyright &copy; Afrecom 2023
-                      </p>
-                    </div>
-                  </footer>
+              <footer>
+                <div class="row bgColor">
+                  <div class="col-md-4 text-center text-white">
+                    <h6>Contact Us</h6>
+                    <h7>+254-726-837-210</h7></br>
+                    <h7>info@fgm.com</h7>
+                    <h7>Phone: 555-123-4567</h7></br>
+                    <h7>Nairobi</h7></br>
+                    <h7>Kenya</h7>
+                  </div>
+                  <div class="col-md-4 text-center text-white">
+                    <h6>Follow Us</h6>
+                    <a href="#" class="text-light me-3"
+                      ><i class="fab fa-facebook fa-3x "></i
+                    ></a>
+                    <a href="#" class="text-light me-3"
+                      ><i class="fab fa-twitter fa-3x "></i
+                    ></a>
+                    <a href="#" class="text-light me-3"
+                      ><i class="fab fa-instagram fa-3x "></i
+                    ></a>
+                    <a href="#" class="text-light  me-3"
+                      ><i class="fab fa-linkedin fa-3x "></i
+                    ></a>
+                  </div>
+                  <div class="col-md-4 text-center text-white">
+                    <h6>Quick links</h6>
+                    <h7 role="button" >Home</h7></br>
+                    <h7 role="button" >About us</h7></br>
+                    <h7 role="button" >Chat</h7></br>
+                    <h7>Resources</h7></br>
+                    <h7 role="button">Contact us</h6>
+                  </div>
                 </div>
-              </div>
+
+                <div class="row bgColor">
+                  <div class="col-12">
+                    <footer>
+                      <div class="container">
+                        <p class="text-center text-white">
+                          Copyright &copy; Afrecom 2023
+                        </p>
+                      </div>
+                    </footer>
+                  </div>
+                </div>
+              </footer>
+              
                       
 
     </div>

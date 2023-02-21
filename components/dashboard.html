@@ -20,11 +20,12 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
     />
+    <link rel="stylesheet" type="text/css" href="/components/style.css" />
   </head>
-  <body class="bg-dark">
+  <body class="bgBody">
     <div class="container">
       <!--Navabar-->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+      <nav class="navbar navbar-expand-lg navbar-dark bgColor">
         <div class="container">
           <a class="navbar-brand" href="#">Dashboard</a>
           <button
@@ -115,7 +116,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="card m-1">
-                <div class="card-header text-primary mt-10">
+                <div class="card-header text-success mt-10">
                   <h4>Add products</h4>
                 </div>
                 <p
@@ -202,7 +203,7 @@
                 <div class="card-footer row">
                   <div class="col-6 m-auto">
                     <button
-                      class="btn btn-primary m-1"
+                      class="btn btnColor text-white m-1"
                       type="submit"
                       id="saveProduct"
                     >
@@ -219,7 +220,7 @@
       <!--Dash board summary-->
       <section id="summarySection" style="display: none">
         <div class="card container-fluid p-1">
-          <div class="card-header text-primary mt-10">
+          <div class="card-header text-success mt-10">
             <h4>Summary</h4>
           </div>
           <div class="card-body row">
@@ -266,7 +267,7 @@
             <div class="col-md-12 m-auto">
               <div class="card">
                 <form class="card-body">
-                  <div class="card-header text-primary">
+                  <div class="card-header text-success">
                     <h4>Sign up</h4>
                   </div>
                   <div id="addUserMessage" class="text-success"></div>
@@ -326,7 +327,7 @@
                   />
                   <div class="card-footer m-auto">
                     <button
-                      class="btn btn-dark m-1"
+                      class="btn btnColor text-white m-1"
                       type="submit"
                       onclick="addUser()"
                     >
@@ -334,7 +335,7 @@
                     </button>
                     <label class="text-danger">Already have account?</label>
                     <button
-                      class="btn btn-primary m-1"
+                      class="btn btnColor text-white m-1"
                       id="login"
                       onclick="location.href='login.html'"
                     >
@@ -357,7 +358,7 @@
         <div class="row">
           <div class="card col-lg-12">
             <div class="card-header">
-              <h4 class="text-primary">Products table</h4>
+              <h4 class="text-success">Products table</h4>
             </div>
             <div class="text-center">
               <div class="card-body">
@@ -386,7 +387,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="card">
-                <div class="card-header text-primary"><h4>Orders</h4></div>
+                <div class="card-header text-success"><h4>Orders</h4></div>
                 <div class="card-body">
                   <table class="table table-bordered">
                     <thead>
@@ -411,7 +412,7 @@
 
       <div class="row">
         <div class="col-12">
-          <footer class="bg-dark">
+          <footer class="bgColor">
             <div class="container">
               <p class="text-center text-white">
                 Copyright &copy; Afrecom 2023
