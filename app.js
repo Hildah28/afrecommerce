@@ -136,7 +136,7 @@ function displayProducts() {
       console.error("Error getting products", error);
     });
 }
-//displayProducts();
+displayProducts();
 
 function addCart(button) {
   let card = button.closest(".card");
