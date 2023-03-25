@@ -144,7 +144,7 @@
                                       <div class="card text-white bg-success">
                                         <div class="card-header"><i class="fas fa-3x fa-shopping-cart"></i>Orders</div>
                                         <div class="card-body">
-                                          <h4 class="card-title text-center">0</h4>
+                                          <h4 class="card-title text-center" id="totalOrders">0</h4>
                                         </div>
                                       </div>
                                     </div>
@@ -160,7 +160,7 @@
                                       <div class="card text-white bg-danger">
                                         <div class="card-header"><i class="fas fa-3x fa-user"></i>Total customers</div>
                                         <div class="card-body">
-                                          <h4 class="card-title text-center">0</h4>
+                                          <h4 class="card-title text-center" id="totalCustomers">0</h4>
                                         </div>
                                       </div>
                                     </div>
@@ -214,16 +214,39 @@
                               </button>
                             </div>
                             <div class="modal-body container" id="productModalBody">
-                              <div id="addOrderMessage" class="addOrderMessage"></div>
+                                <div id="addOrderMessage"></div>
                             </div>
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-success fas fa-shopping-cart" onclick="addOrder(this)">Place order</button>
+                              <button 
+                              type="button" 
+                              class="btn btn-success fas fa-shopping-cart form-control" 
+                              onclick="addOrder(this)"
+                              data-bs-toggle="modal" 
+                              data-bs-target="#orderModal"
+                              >Add Cart</button>
                           
-                              <button type="button" class="btn btn-success fas fa-shopping-bag"  data-dismiss="modal">Continue Shopping</button>                            
-                                </div>
+                              <button type="button" 
+                                  class="btn btn-warning fas fa-shopping-bag form-control"  
+                                  data-dismiss="modal"
+                                >Continue Shopping</button>                            
+                            </div>
                           </div>
                         </div>
-                      </div>           
+                      </div>   
+                      
+                      <!-- message modal-->
+                        <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-body" id="addOrderMessage">
+                                This is a single line of text.
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 
 
 

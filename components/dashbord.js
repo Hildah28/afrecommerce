@@ -139,3 +139,33 @@ function saveProductData() {
       console.error("Error saving product", error);
     });
 }
+
+function addUser() {
+  let nameInput = document.getElementById("nameInput").value;
+  let usernameInput = document.getElementById("usernameInput").value;
+  let passwordInput = document.getElementById("passwordInput").value;
+  let emailInput = document.getElementById("emailInput").value;
+  let accountTypeSelect = document.getElementById("accountTypeSelect").value;
+  let userData = {
+    nameInput: nameInput,
+    usernameInput: usernameInput,
+    passwordInput: passwordInput,
+    accountTypeSelect: accountTypeSelect,
+    emailInput: emailInput,
+  };
+
+  fetch("http://localhost:3000/addUser", {
+    method: "post",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(userData),
+  })
+    .then((response) => response.json)
+    .then((data) => {
+      console.log("User added successfully");
+      document.getElementById("addUserMessage").innerHTML =
+        "User added successfully";
+    })
+    .catch((error) => {
+      console.log(error + "Error adding user");
+    });
+}

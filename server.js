@@ -117,6 +117,23 @@ app.post("/addUser", (req, res) => {
   }
 });
 
+//select user route
+app.get("/selectUser", (req, res) => {
+  try {
+    const selectUserQuery = `SELECT * FROM users`;
+    connection.query(selectUserQuery, (error, results) => {
+      if (error) {
+        console.log("Failed to select user" + error);
+        res.status(500).send("Failed to select user");
+      } else {
+        res.status(200).send({ users: results });
+      }
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 app.post("/addOrder", (req, res) => {
   try {
     const {

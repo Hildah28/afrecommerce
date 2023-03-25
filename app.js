@@ -99,7 +99,15 @@ function displayProducts() {
                         <i class="fas fa-star text-warning"></i>                        
                         <i class="fas fa-star text-warning"></i>
                     </p>
-                    <button type="button"  class="btn btn-success" type="button" data-toggle="modal" data-target="#productModal" id="addCartBtn" onclick="addCart(this)">View Item <i class="fas fa-shopping-cart"></i> </button>
+                    <button type="button"  
+                            class="btn btn-success" 
+                            type="button" 
+                            data-toggle="modal" 
+                            data-target="#productModal" 
+                            id="addCartBtn" 
+                            onclick="addCart(this)">
+                            View Item <i class="fas fa-shopping-cart"></i> 
+                    </button>
                    </div>
             </div>        
         </div>`;
@@ -238,7 +246,7 @@ function addCart(button) {
                           
                           <div class="text-success text-center bg-dark" id="addOrderMessage"></div>               
                           <div class="card-body"> 
-                            <h5 class="card-text text-sm text-danger">Ksh${price}</h5>
+                            <h5 class="card-text text-sm text-danger">${price}</h5>
                             <div class="d-flex justify-content-center" style="width: 100%;">
                                   <i class="fas fa-star text-warning"></i>
                                   <i class="fas fa-star text-warning"></i>
@@ -272,49 +280,8 @@ function decreaseValue() {
   document.getElementById("orderNoItems").innerHTML = value; // update value displayed on webpage
 }
 
-function addUser() {
-  let nameInput = document.getElementById("nameInput").value;
-  let usernameInput = document.getElementById("usernameInput").value;
-  let passwordInput = document.getElementById("passwordInput").value;
-  let emailInput = document.getElementById("emailInput").value;
-  let accountTypeSelect = document.getElementById("accountTypeSelect").value;
-  let userData = {
-    nameInput: nameInput,
-    usernameInput: usernameInput,
-    passwordInput: passwordInput,
-    accountTypeSelect: accountTypeSelect,
-    emailInput: emailInput,
-  };
-
-  fetch("http://localhost:3000/addUser", {
-    method: "post",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify(userData),
-  })
-    .then((response) => response.json)
-    .then((data) => {
-      console.log("User added successfully");
-      document.getElementById("addUserMessage").innerHTML =
-        "User added successfully";
-      const toast = document.createElement("div");
-      toast.classList.add("toast");
-      toast.innerHTML = "User added successfully";
-
-      // Add the toast to the page
-      document.getElementById("addUserMessage").appendChild(toast);
-
-      // Show the toast for a short amount of time
-      setTimeout(() => {
-        toast.remove();
-      }, 3000);
-    })
-    .catch((error) => {
-      console.log(error + "Error adding user");
-      showToast("Error adding user");
-    });
-}
-
 function addOrder(button) {
+  alert("Add to cart");
   const modalBody = document.getElementById("productModalBody");
   const productName = modalBody.querySelector("h5").textContent.trim();
   const totalPrice = modalBody.querySelector(".card-text").textContent.trim();
@@ -339,6 +306,7 @@ function addOrder(button) {
     totalPrice,
     orderTime,
   };
+  console.log(orderData);
   fetch("http://localhost:3000/addOrder", {
     method: "post",
     headers: { "content-type": "application/json" },
@@ -348,36 +316,18 @@ function addOrder(button) {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-
       console.log(response);
       return response.json();
     })
     .then((data) => {
       alert("Order added successfully");
-      console.error("Order added successfully:", data);
-      addOrderMessage.innerHTML = "Order added successfully";
-      showToast("Order added successfully"); // Call the showToast() function to display a toast message
+      document.getElementById("addOrderMessage").innerHTML =
+        "Order added successfully";
     })
     .catch((error) => {
       console.error("Error adding order:", error);
-      addOrderMessage.innerHTML =
-        "Failed to add order. Please try again later.";
       alert("Failed to place order. Please try again later.");
     });
-}
-
-function showToast(message) {
-  const toast = document.createElement("div");
-  toast.classList.add("toast");
-  toast.innerHTML = message;
-
-  // Add the toast to the page
-  document.body.appendChild(toast);
-
-  // Show the toast for a short amount of time
-  setTimeout(() => {
-    toast.remove();
-  }, 3000);
 }
 
 function makePayment() {
@@ -420,8 +370,6 @@ function selectProducts() {
       const productsPerPage = 6;
 
       function showProductPage(page) {
-        document.getElementById("totalProducts").innerHTML = products.length;
-        document.getElementById("topProducts").innerHTML = products.length;
         currentPage = page;
         let productHtml = "";
         const startIndex = (page - 1) * productsPerPage;
@@ -464,6 +412,77 @@ function selectProducts() {
     });
 }
 
+//display summary information
+function showSummary() {
+  //get number of products
+  fetch("http://localhost:3000/getProducts", {
+    method: "get",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to get product");
+      } else {
+        console.log({ success: "successful getting products" });
+        return response.json();
+      }
+    })
+    .then((data) => {
+      document.getElementById("totalProducts").innerHTML = data.products.length;
+      document.getElementById("topProducts").innerHTML = data.products.length;
+    })
+    .catch((error) => {
+      console.log("Error getting products" + error);
+    });
+
+  //get number of orders
+  fetch("http://localhost:3000/getOrders", {
+    method: "get",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to get orders");
+      } else {
+        console.log({ success: "successful getting orderss" });
+        return response.json();
+      }
+    })
+    .then((data) => {
+      document.getElementById("totalOrders").innerHTML = data.products.length;
+    })
+    .catch((error) => {
+      console.log("Error getting orderss" + error);
+    });
+
+  //get number of users
+  fetch("http://localhost:3000/selectUser", {
+    method: "get",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to get user");
+      } else {
+        console.log({ success: "successful getting users" });
+        return response.json();
+      }
+    })
+    .then((data) => {
+      console.log(data);
+      document.getElementById("totalCustomers").innerHTML = data.users.length;
+    })
+    .catch((error) => {
+      console.log("Error getting users" + error);
+    });
+}
+showSummary();
 //function to display orders
 function getOrdersData() {
   document.getElementById("ordersSection").style.display = "block";

@@ -43,13 +43,34 @@
                     <button class="btn btnColor text-white m-1 " type="button" onclick="location.href='dashboard.html'">Login</button>
                     <div class=" row d-flex align-items-center justify-content-center">
                       <label for="sign up" class="card-title text-sm text-danger">Don't have an account?</label>
-                      <button class="btn btnColor text-white m-1" id="signup" onclick="location.href='/components/signup.html'">Sign up</button>
-                    </div>
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#orderModal">
+                        Sign Up
+                      </button>
+                     </div>
                  </div>
             </div>
           </div>
         </div>
     </section> 
 
+
+
+
+     <!-- message modal-->
+     <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body" id="addOrderMessage">
+            This is a single line of text.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    
   </body>
 </html>
