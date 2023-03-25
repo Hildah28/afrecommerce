@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/components/style.css">
   </head>
   <body class="bgBody">
+    
     <div class="card container">
                   <div class="row">
                     <div class="col-12"> 
@@ -177,13 +178,13 @@
                   <h4>Available products</h4>
                   <div class="row">
                     <div class="col-4"><select id="productTypeSelect" class="form-control">
-                      <option value="clothing">Clothing</option>
-                      <option value="footware">Footware</option>
-                      <option value="accessories">Accessories</option>
+                      <option value="Clothing" onclick="displayProductType(this.value)">Clothing</option>
+                      <option value="Footware" onclick="displayProductType(this.value)" >Footware</option>
+                      <option value="Accessories" onclick="displayProductType(this.value)">Accessories</option>
                     </select>
                   </div>
                     <div class="col-8">
-                      <input class="form-control text-dark" type="search" placeholder=' Search products'
+                      <input class="form-control text-dark" type="search" placeholder=' Search by product name'
                       id="productSearchInput" name="productSearch" aria-label="Search"/></div>
                     
                     </div>

@@ -62,6 +62,32 @@ app.get("/getProducts", (req, res) => {
   });
 });
 
+//route to select products from the database by category
+app.get("/getProductsType", (req, res) => {
+  const category = req.query.category;
+  const selectQuerry = `select * from products where category='${category}'`;
+  connection.query(selectQuerry, (error, results) => {
+    if (error) {
+      res.status(500).send("Failed to get product per category");
+    } else {
+      res.status(200).send({ products: results });
+    }
+  });
+});
+
+//route to search for products
+//route to select products from the database by category
+app.get("/searchProduct", (req, res) => {
+  const productName = req.query.productName;
+  const selectQuerry = `select * from products where name like '%${productName}%'`;
+  connection.query(selectQuerry, (error, results) => {
+    if (error) {
+      res.status(500).send("Failed to search product");
+    } else {
+      res.status(200).send({ products: results });
+    }
+  });
+});
 //add user route
 app.post("/addUser", (req, res) => {
   try {

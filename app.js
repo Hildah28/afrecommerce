@@ -99,7 +99,7 @@ function displayProducts() {
                         <i class="fas fa-star text-warning"></i>                        
                         <i class="fas fa-star text-warning"></i>
                     </p>
-                    <button type="button"  class="btn btn-success" type="button" data-toggle="modal" data-target="#productModal" id="addCartBtn" onclick="addCart(this)">Add cart <i class="fas fa-shopping-cart"></i> </button>
+                    <button type="button"  class="btn btn-success" type="button" data-toggle="modal" data-target="#productModal" id="addCartBtn" onclick="addCart(this)">View Item <i class="fas fa-shopping-cart"></i> </button>
                    </div>
             </div>        
         </div>`;
@@ -130,7 +130,7 @@ function displayProducts() {
           paginationControls;
       }
 
-      showPage(3);
+      showPage(1);
     })
     .catch((error) => {
       console.error("Error getting products", error);
@@ -138,6 +138,94 @@ function displayProducts() {
 }
 displayProducts();
 
+function displayProductType(value) {
+  fetch(`http://localhost:3000/getProductsType?category=${value}`, {
+    method: "get",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to get product");
+      } else {
+        console.log({ success: "successful getting cloathing products" });
+        return response.json();
+      }
+    })
+    .then((data) => {
+      window.showPage = showPage;
+      let products = data.products;
+      let currentPage = 1;
+      const productsPerPage = 6;
+
+      function showPage(page) {
+        currentPage = page;
+        let clothProductHTML = "";
+        const startIndex = (page - 1) * productsPerPage;
+        const endIndex = startIndex + productsPerPage;
+        const clothsProducts = products.slice(startIndex, endIndex);
+
+        clothsProducts.forEach((product) => {
+          clothProductHTML += `
+        <div class="col-lg-2">
+            <div class="card m-1">
+            <div class="card-header">
+            <img class="img-responsive" src="images/${product.image}" style="width:100%;height:80%">
+            <h5 class="card-text text-sm text-dark text-center">${product.name}</h5>
+            </div>                
+                <div class="card-body">               
+                    <h5 class="card-text text-sm text-danger text-center">Ksh${product.price}</h5>
+                    <p class="d-flex justfy-content-centre">
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>                        
+                        <i class="fas fa-star text-warning"></i>
+                    </p>
+                    <button type="button"  class="btn btn-success" type="button" data-toggle="modal" data-target="#productModal" id="addCartBtn" onclick="addCart(this)">View Item <i class="fas fa-shopping-cart"></i> </button>
+                   </div>
+            </div>        
+        </div>`;
+        });
+        document.getElementById("productsRow").innerHTML = clothProductHTML;
+        updatePaginationControls();
+      }
+
+      function updatePaginationControls() {
+        const totalPages = Math.ceil(products.length / productsPerPage);
+        let paginationControls = "";
+        if (currentPage > 1) {
+          paginationControls += `<i class="fas fa-chevron-left" role="button" onclick="showPage(
+            ${currentPage - 1}
+          )"></i>`;
+        }
+        for (let i = 1; i <= totalPages; i++) {
+          paginationControls += `<i class="bg-dark m-1 text-white" role="button" onclick="showPage(
+            ${i}
+          )">${i}</i>`;
+        }
+        if (currentPage < totalPages) {
+          paginationControls += `<i class="fas fa-chevron-right m-1" onclick="showPage(${
+            currentPage + 1
+          })"></i>`;
+        }
+        document.getElementById("paginationControls").innerHTML =
+          paginationControls;
+      }
+
+      showPage(1);
+    })
+    .catch((error) => {
+      console.error("Error getting products", error);
+    });
+}
+function displayFootware() {
+  alert("footware");
+}
+function displayAccessories() {
+  alert("accessories");
+}
 function addCart(button) {
   let card = button.closest(".card");
   const name = card.querySelector(".card-text").textContent;
@@ -376,6 +464,7 @@ function selectProducts() {
     });
 }
 
+//function to display orders
 function getOrdersData() {
   document.getElementById("ordersSection").style.display = "block";
   fetch("http://localhost:3000/getOrders", {
@@ -440,3 +529,94 @@ function getOrdersData() {
       console.log(error);
     });
 }
+
+//search functionality
+document.addEventListener("DOMContentLoaded", function () {
+  var inputField = document.getElementById("productSearchInput");
+  inputField.addEventListener("input", function () {
+    var searchQuery = inputField.value.toLowerCase();
+
+    fetch(`http://localhost:3000/searchProduct?productName=${searchQuery}`, {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to get product");
+        } else {
+          console.log({ success: "successful getting products" });
+          return response.json();
+        }
+      })
+      .then((data) => {
+        window.showPage = showPage;
+        let products = data.products;
+        let currentPage = 1;
+        const productsPerPage = 6;
+
+        function showPage(page) {
+          document.getElementById("totalProducts").innerHTML = products.length;
+          document.getElementById("topProducts").innerHTML = products.length;
+          currentPage = page;
+          let productHtml = "";
+          const startIndex = (page - 1) * productsPerPage;
+          const endIndex = startIndex + productsPerPage;
+          const productsToShow = products.slice(startIndex, endIndex);
+
+          productsToShow.forEach((product) => {
+            productHtml += `
+          <div class="col-lg-2">
+              <div class="card m-1">
+              <div class="card-header">
+              <img class="img-responsive" src="images/${product.image}" style="width:100%;height:80%">
+              <h5 class="card-text text-sm text-dark text-center">${product.name}</h5>
+              </div>                
+                  <div class="card-body">               
+                      <h5 class="card-text text-sm text-danger text-center">Ksh${product.price}</h5>
+                      <p class="d-flex justfy-content-centre">
+                          <i class="fas fa-star text-warning"></i>
+                          <i class="fas fa-star text-warning"></i>
+                          <i class="fas fa-star text-warning"></i>
+                          <i class="fas fa-star text-warning"></i>                        
+                          <i class="fas fa-star text-warning"></i>
+                      </p>
+                      <button type="button"  class="btn btn-success" type="button" data-toggle="modal" data-target="#productModal" id="addCartBtn" onclick="addCart(this)">View Item <i class="fas fa-shopping-cart"></i> </button>
+                     </div>
+              </div>        
+          </div>`;
+          });
+          document.getElementById("productsRow").innerHTML = productHtml;
+          updatePaginationControls();
+        }
+
+        function updatePaginationControls() {
+          const totalPages = Math.ceil(products.length / productsPerPage);
+          let paginationControls = "";
+          if (currentPage > 1) {
+            paginationControls += `<i class="fas fa-chevron-left" role="button" onclick="showPage(
+              ${currentPage - 1}
+            )"></i>`;
+          }
+          for (let i = 1; i <= totalPages; i++) {
+            paginationControls += `<i class="bg-dark m-1 text-white" role="button" onclick="showPage(
+              ${i}
+            )">${i}</i>`;
+          }
+          if (currentPage < totalPages) {
+            paginationControls += `<i class="fas fa-chevron-right m-1" onclick="showPage(${
+              currentPage + 1
+            })"></i>`;
+          }
+          document.getElementById("paginationControls").innerHTML =
+            paginationControls;
+        }
+
+        showPage(1);
+      })
+      .catch((error) => {
+        console.error("Error getting products", error);
+      });
+  });
+});
