@@ -147,6 +147,7 @@ function displayProducts() {
 displayProducts();
 
 function displayProductType(value) {
+  alert('working');
   fetch(`http://localhost:3000/getProductsType?category=${value}`, {
     method: "get",
     headers: {

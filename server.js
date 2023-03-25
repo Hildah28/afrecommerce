@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
 const cors = require("cors");
-
+con=hild();
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -76,7 +76,6 @@ app.get("/getProductsType", (req, res) => {
 });
 
 //route to search for products
-//route to select products from the database by category
 app.get("/searchProduct", (req, res) => {
   const productName = req.query.productName;
   const selectQuerry = `select * from products where name like '%${productName}%'`;
