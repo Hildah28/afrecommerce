@@ -1,62 +1,74 @@
 # Afrecommerce - African Fashion E-commerce Website
 
-Welcome to Afrecommerce, an e-commerce website for buying African fashion including clothing, accessories, and footwear. This website is built using HTML, CSS, Bootstrap, JavaScript, NodeJS, and MySQL. The project is open-source and available on Github.
-Setting up the project on your local machine
+Afrecommerce is an e-commerce website that provides a platform for buying and selling African fashion, including clothing, footwear, and accessories. The website is developed using HTML, CSS, Bootstrap, JavaScript, and MySQL, and the development tools used are VS Code and Git.
 
-To set up the project on your local machine, follow these steps:
-Fork the repository
+This README will guide you through the steps required to install all the dependencies needed to run the website on another machine, as well as how to import tables from an SQL file located in the assets folder.
+Prerequisites
 
-Fork the repository to your own Github account by clicking the "Fork" button in the top-right corner of the repository page.
-Clone the repository
+Before proceeding with the installation, make sure you have the following installed on your machine:
 
-Clone the repository to your local machine using the following command in your terminal:
+    Git
+    Node.js
+    MySQL
+
+Installation
+
+    Clone the Afrecommerce repository from GitHub:
 
 bash
 
-git clone https://github.com/YOUR-USERNAME/afrecommerce.git
+git clone https://github.com/alexkemboi/afrecommerce.git
 
-Make sure to replace YOUR-USERNAME with your Github username.
-Install dependencies
+    Move into the project directory:
 
-Navigate to the project directory in your terminal and run the following command to install the project dependencies:
+bash
+
+cd afrecommerce
+
+    Install the project dependencies:
 
 bash
 
 npm install
 
-Set up the database
-
-The project uses MySQL as the database. Make sure you have MySQL installed on your machine. Create a new database named afrecommerce in MySQL.
-
-Next, create a .env file in the project root directory and add the following configuration:
-
-bash
-
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=
-DB_NAME=afrecommerce
-
-Make sure to replace the DB_USER and DB_PASSWORD values with your MySQL username and password if you have set one.
-
-Finally, run the following command in your terminal to create the necessary tables in the database:
-
-bash
-
-npm run setup-db
-
-Starting the server
-
-To start the server, run the following command in your terminal:
+    Start the development server:
 
 bash
 
 npm start
 
-The server will start running on http://localhost:3000.
-Contributing
+The website should now be running on http://localhost:3000.
+Importing Tables from an SQL File
 
-We welcome contributions to the project. To contribute, fork the repository, make your changes, and create a pull request.
-License
+The Afrecommerce project comes with an SQL file located in the assets folder that contains the necessary database tables. To import these tables, follow these steps:
 
-The project is licensed under the MIT License.
+    Open MySQL in your terminal:
+
+bash
+
+mysql -u root -p
+
+    Enter your MySQL password when prompted.
+
+    Create a new database:
+
+sql
+
+CREATE DATABASE afrecommerce;
+
+    Switch to the new database:
+
+sql
+
+USE afrecommerce;
+
+    Import the tables from the SQL file:
+
+sql
+
+SOURCE assets/afrecommerce.sql;
+
+The tables should now be imported and ready to use.
+Conclusion
+
+You should now have Afrecommerce up and running on your machine, with all the necessary database tables imported. If you encounter any issues during the installation process, please refer to the project's documentation or open an issue on the GitHub repository.
